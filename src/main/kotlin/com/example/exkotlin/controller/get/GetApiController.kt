@@ -37,4 +37,12 @@ class GetApiController {
         println(userRequest)
         return userRequest
     }
+
+    @GetMapping("/get-mapping/query-param/map")
+    fun queryParamMap(@RequestParam map: Map<String, Any>): Map<String, Any> {
+        println(map)
+        val phoneNumber = map["phone-number"]
+        println("phoneNumber : $phoneNumber")
+        return map
+    }
 }
