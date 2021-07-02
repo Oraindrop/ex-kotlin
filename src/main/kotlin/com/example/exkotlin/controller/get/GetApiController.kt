@@ -1,6 +1,6 @@
 package com.example.exkotlin.controller.get
 
-import com.example.exkotlin.controller.get.model.http.UserRequest
+import com.example.exkotlin.model.http.UserRequest
 import org.springframework.web.bind.annotation.*
 
 @RestController

@@ -1,4 +1,4 @@
-package com.example.exkotlin.controller.get.model.http
+package com.example.exkotlin.model.http
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategy
 import com.fasterxml.jackson.databind.annotation.JsonNaming
