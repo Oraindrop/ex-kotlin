@@ -1,4 +1,4 @@
-package com.example.exkotlin.controller.delete
+package com.example.exkotlin.controller.request.delete
 
 import org.springframework.web.bind.annotation.*
 

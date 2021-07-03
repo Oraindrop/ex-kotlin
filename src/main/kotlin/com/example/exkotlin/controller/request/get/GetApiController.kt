@@ -1,4 +1,4 @@
-package com.example.exkotlin.controller.get
+package com.example.exkotlin.controller.request.get
 
 import com.example.exkotlin.model.http.UserRequest
 import org.springframework.web.bind.annotation.*

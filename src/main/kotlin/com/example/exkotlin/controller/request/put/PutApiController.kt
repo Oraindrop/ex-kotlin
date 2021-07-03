@@ -1,4 +1,4 @@
-package com.example.exkotlin.controller.put
+package com.example.exkotlin.controller.request.put
 
 import com.example.exkotlin.model.http.Result
 import com.example.exkotlin.model.http.UserRequest
