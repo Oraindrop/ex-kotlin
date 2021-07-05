@@ -3,7 +3,11 @@ package com.example.exkotlin.controller.request.put
 import com.example.exkotlin.model.http.Result
 import com.example.exkotlin.model.http.UserRequest
 import com.example.exkotlin.model.http.UserResponse
+import org.springframework.http.ResponseEntity
+import org.springframework.validation.BindingResult
+import org.springframework.validation.FieldError
 import org.springframework.web.bind.annotation.*
+import javax.validation.Valid
 
 @RestController
 @RequestMapping("/api")
@@ -20,35 +24,19 @@ class PutApiController {
     }
 
     @PutMapping(path =["/put-mapping/object"])
-    fun putMappingObject(@RequestBody userRequest: UserRequest): UserResponse {
-        return UserResponse().apply {
-            this.result = Result().apply {
-                this.resultCode = "OK"
-                this.resultMessage = "성공"
+    fun putMappingObject(@Valid @RequestBody userRequest: UserRequest,
+                         bindingResult: BindingResult): ResponseEntity<String> {
+
+        if (bindingResult.hasErrors()) {
+            val msg = StringBuilder()
+            bindingResult.allErrors.forEach {
+                val field = it as FieldError
+                val message = it.defaultMessage
+                msg.append("${field.field} : $message\n")
             }
-        }.apply {
-            this.description = "description"
-        }.apply {
-            val userList = mutableListOf<UserRequest>()
-
-            userList.add(userRequest)
-            userList.add(UserRequest().apply {
-                this.name = "a"
-                this.age = 10
-                this.email = "a@"
-                this.address = "a address"
-                this.phoneNumber = "010-1234-1234"
-            })
-
-            userList.add(UserRequest().apply {
-                this.name = "b"
-                this.age = 30
-                this.email = "b@"
-                this.address = "b address"
-                this.phoneNumber = "010-1234-5678"
-            })
-
-            this.user = userList
+            return ResponseEntity.badRequest().body(msg.toString())
         }
+
+        return ResponseEntity.ok("")
     }
 }
