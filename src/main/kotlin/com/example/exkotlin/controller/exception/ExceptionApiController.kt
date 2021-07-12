@@ -24,9 +24,9 @@ import kotlin.IndexOutOfBoundsException
 class ExceptionApiController {
 
     @GetMapping("/hello")
-    fun hell() {
+    fun hello(): String {
         val list = mutableListOf<String>()
-        val temp = list[0]
+        return "hello"
     }
 
     @GetMapping("")
